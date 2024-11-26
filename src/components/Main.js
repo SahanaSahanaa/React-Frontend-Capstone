@@ -1,23 +1,30 @@
-const Main = ()=>{
+import React, { useReducer } from "react";
+import BookingPage from "./BookingPage";
+
+const initializeTimes = () => {
+  // Define the initial available times
+  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+};
+
+const updateTimes = (state, action) => {
+
+  if (action.type === "UPDATE_TIMES") {
+    return state;
+  }
+  return state;
+};
+
+function Main() {
+  const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
  return (
+    <>
+    <div>
+    <BookingPage availableTimes={availableTimes} dispatch={dispatch} />
+  </div>
+
  <main>
     <div className="container">
-      <header className="navbar">
-        <div className="logo">
-          <img src="https://via.placeholder.com/50" alt="Little Lemon Logo" />
-          <span className="logo-text">LITTLE LEMON</span>
-        </div>
-        <nav>
-          <ul className="nav-links">
-            <li>Home</li>
-            <li>About</li>
-            <li>Menu</li>
-            <li>Reservations</li>
-            <li>Order Online</li>
-            <li>Login</li>
-          </ul>
-        </nav>
-      </header>
+
       <section className="hero">
         <div className="hero-text">
           <h1>Little Lemon</h1>
@@ -84,6 +91,7 @@ const Main = ()=>{
       </section>
     </div>
  </main>
+ </>
  );
 
 }

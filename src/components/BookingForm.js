@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 
-function BookingForm() {
+function BookingForm({availableTimes, dispatch }) {
   // State variables for form fields
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("");
 
-  // State for available times
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
+//   // State for available times
+//   const [availableTimes, setAvailableTimes] = useState([
+//     "17:00",
+//     "18:00",
+//     "19:00",
+//     "20:00",
+//     "21:00",
+//     "22:00",
+//   ]);
+
+  const handleDateChange = (e) => {
+    const newDate = e.target.value;
+    setDate(newDate);
+
+    // Dispatch an action to update available times based on the new date
+    dispatch({ type: "UPDATE_TIMES", date: newDate });
+  };
 
   // Form submission handler
   const handleSubmit = (e) => {
@@ -38,7 +46,7 @@ function BookingForm() {
         type="date"
         id="res-date"
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={handleDateChange}
         required
       />
 
@@ -89,7 +97,7 @@ function BookingForm() {
 
       {/* Submit Button */}
       <button type="submit" style={{ backgroundColor: "#f4b400", color: "#fff", padding: "10px", border: "none" }}>
-        Make Your Reservation
+        Make Reservation
       </button>
     </form>
   );
