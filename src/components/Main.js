@@ -1,18 +1,33 @@
 import React, { useReducer } from "react";
 import BookingPage from "./BookingPage";
 
-const initializeTimes = () => {
-  // Define the initial available times
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+// const initializeTimes = () => {
+//   // Define the initial available times
+//   return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+// };
+
+/* global fetchAPI */
+const initializeTimes =() =>{
+  const today = new Date();
+  return fetchAPI(today);
 };
 
-const updateTimes = (state, action) => {
 
-  if (action.type === "UPDATE_TIMES") {
-    return state;
+// const updateTimes = (state, action) => {
+
+//   if (action.type === "UPDATE_TIMES") {
+//     return state;
+//   }
+//   return state;
+// };
+
+function updateTimes(state, action) {
+  if (action.type === "dateChange") {
+    return fetchAPI(new Date(action.payload)); // Fetch new available times
   }
   return state;
-};
+}
+
 
 function Main() {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
