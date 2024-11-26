@@ -1,4 +1,8 @@
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Main from './components/Main';
+
 
 function App() {
   return (
@@ -18,7 +22,25 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <div>Home Page</div>
+    // <div>Home Page</div>
+
+    //react fragment tags <> </>
+
+    <>
+    <Header/>
+    <nav>
+      <ul>
+        <li> <a href="Home">Home</a> </li>
+        <li><a href="About">About</a></li>
+        <li><a href="Menu">Menu</a></li>
+        <li><a href="Reservation">Reservation</a></li>
+        <li><a href="Order">Order online</a></li>
+        <li><a href="Login">Login</a></li>
+      </ul>
+    </nav>
+    <Main/>
+    <Footer/>
+    </>
   );
 }
 
