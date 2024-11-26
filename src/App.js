@@ -2,6 +2,7 @@ import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
+import Nav from './components/Nav';
 
 
 function App() {
@@ -28,16 +29,7 @@ function App() {
 
     <>
     <Header/>
-    <nav>
-      <ul>
-        <li> <a href="Home">Home</a> </li>
-        <li><a href="About">About</a></li>
-        <li><a href="Menu">Menu</a></li>
-        <li><a href="Reservation">Reservation</a></li>
-        <li><a href="Order">Order online</a></li>
-        <li><a href="Login">Login</a></li>
-      </ul>
-    </nav>
+    <Nav/>
     <Main/>
     <Footer/>
     </>
